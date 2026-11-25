@@ -5,8 +5,6 @@ apresentar os tokens, avisos e erros encontrados. As opções das fases futuras
 (`-o`, `--ir`, `-O`) já estão estruturadas no `argparse`.
 """
 
-from __future__ import annotations
-
 import argparse
 import sys
 from pathlib import Path
@@ -16,10 +14,10 @@ _PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))
 
-from src.lexer import tokenize_with_diagnostics  # noqa: E402
+from src.lexer import tokenize_with_diagnostics
 
 
-def build_arg_parser() -> argparse.ArgumentParser:
+def build_arg_parser():
     """Cria o parser de argumentos da linha de comandos."""
     parser = argparse.ArgumentParser(
         prog="fortran_compiler.py",
@@ -56,7 +54,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def run_lex_only(source_path: Path) -> int:
+def run_lex_only(source_path):
     """Corre a análise léxica sobre `source_path` e imprime o resultado."""
     if not source_path.is_file():
         print(f"Erro: ficheiro não encontrado: '{source_path}'", file=sys.stderr)
@@ -90,7 +88,7 @@ def run_lex_only(source_path: Path) -> int:
     return 0
 
 
-def main(argv: list[str] | None = None) -> int:
+def main(argv=None):
     """Ponto de entrada principal da CLI."""
     parser = build_arg_parser()
     args = parser.parse_args(argv)
