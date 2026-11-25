@@ -78,4 +78,4 @@ pip install ply pytest
 python src/fortran_compiler.py --tokens tests/examples/02_fatorial.f
 
 # Correr a suite de testes
-pytest -v
+python -m pytest -v
